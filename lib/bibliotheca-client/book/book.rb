@@ -1,5 +1,7 @@
+require "time"
+
 module BibliothecaClient
-  ATTRIBUTES = %i(
+  BOOK_ATTRIBUTES = %i(
     id
     title
     description
@@ -12,7 +14,7 @@ module BibliothecaClient
     created_at
   ).freeze
 
-  class Book < Struct.new *ATTRIBUTES
+  class Book < Struct.new *BOOK_ATTRIBUTES
     def self.from_hash(json)
       Book.new(
         json["id"],
@@ -20,11 +22,11 @@ module BibliothecaClient
         json["description"],
         json["authors"],
         json["publisher"],
-        json["image_url"],
+        json["imageUrl"],
         json["isbn"],
-        json["page_count"],
-        json["published_at"],
-        json["created_at"]
+        json["pageCount"],
+        (Date.parse json["publishedAt"] rescue nil),
+        (Time.parse json["insertedAt"] rescue nil)
       )
     end
   end

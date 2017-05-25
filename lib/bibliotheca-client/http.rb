@@ -18,34 +18,40 @@ module BibliothecaClient
     end
 
     def get(url)
-      request Net::HTTP::Get.new(@url_base + url.path)
+      request url, Net::HTTP::Get.new(build_url url)
     end
 
     def post(url, body)
-      request_with_body Net::HTTP::Post.new(@url_base + url.path), body
+      request_with_body url, Net::HTTP::Post.new(build_url url), body
     end
 
     def put(url, body)
-      request_with_body Net::HTTP::Put.new(@url_base + url.path), body
+      request_with_body url, Net::HTTP::Put.new(build_url url), body
     end
 
     def delete(url)
-      request Net::HTTP::Delete.new(@url_base + url.path)
+      request url, Net::HTTP::Delete.new(build_url url)
     end
 
     private
 
-    def request(req)
+    def build_url(url)
+      (@url_base + url.path).tap { |ret|
+        break ret + "?#{url.query}" if url.query
+      }
+    end
+
+    def request(url, req)
       req[@auth_header] = @token
 
       Net::HTTP.new(url.host, url.port).start { |http| http.request(req) }
     end
 
-    def request_with_body(req, body)
+    def request_with_body(url, req, body)
       req["Content-Type"] = "application/json"
       req.body = body
 
-      request req
+      request url, req
     end
   end
 end
