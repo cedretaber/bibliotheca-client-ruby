@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'bibliotheca_client/version'
+require 'bibliotheca-client/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "bibliotheca_client"
+  spec.name          = "bibliotheca-client-ruby"
   spec.version       = BibliothecaClient::VERSION
   spec.authors       = ["cedretaber"]
   spec.email         = ["cedretaber@gmail.com"]
 
   spec.summary       = %q{A client of Bibliotheca}
   spec.description   = %q{A small ruby client for Bibliotheca.}
-  spec.homepage      = "https://github.com/cedretaber/bibliotheca_client"
+  spec.homepage      = "https://github.com/cedretaber/bibliotheca-client-ruby"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

@@ -7,7 +7,7 @@ The client for [Bibliotheca](https://github.com/cedretaber/bibliotheca) the smal
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'bibliotheca_client'
+gem 'bibliotheca-client-ruby'
 ```
 
 And then execute:
@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install bibliotheca_client
+    $ gem install bibliotheca-client-ruby
 
 ## Usage
 
@@ -30,7 +30,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/cedretaber/bibliotheca_client.
+Bug reports and pull requests are welcome on GitHub at https://github.com/cedretaber/bibliotheca-client-ruby.
 
 
 ## License

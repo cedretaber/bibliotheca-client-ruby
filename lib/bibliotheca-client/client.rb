@@ -2,11 +2,11 @@
 require "uri"
 require "json"
 
-require "bibliotheca_client/http"
-require "bibliotheca_client/paths"
-require "bibliotheca_client/response"
-require "bibliotheca_client/book/book"
-require "bibliotheca_client/user/user"
+require "bibliotheca-client/http"
+require "bibliotheca-client/paths"
+require "bibliotheca-client/response"
+require "bibliotheca-client/book/book"
+require "bibliotheca-client/user/user"
 
 module BibliothecaClient
   class Client
