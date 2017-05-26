@@ -4,8 +4,7 @@ require 'rake/testtask'
 task :default => [:test]
 
 desc 'Run all test.'
-Rake::TestTask.new do |t, args|
-  p args
+Rake::TestTask.new do |t|
   t.libs << "test"
   t.test_files = Dir["test/**/test_*.rb"]
   t.verbose = true

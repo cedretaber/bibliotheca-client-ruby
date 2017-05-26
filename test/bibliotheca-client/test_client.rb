@@ -1,7 +1,8 @@
+require_relative "./../test_helper"
+require_relative "./../helpers/with_server"
+
 require "test/unit"
 require "json"
-
-require "./test/helper/with_server"
 
 require "bibliotheca-client/client"
 
