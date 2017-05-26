@@ -26,7 +26,28 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+# login and create client.
+token = Bibliotheca::Client.login email, password
+client = Bibliotheca::Client.new token
+
+# general api
+client.book_search "awesome book"
+book = client.book_detail 42
+client.book_lend book.id
+
+# admin api
+client.user_index
+client.user_create user
+client.user_book_lend user.id, book.id
+
+# logout
+client.logout
+
+# can't access no longer
+client.book_search "awesome book"
+#=> 401
+```
 
 ## Development
 
