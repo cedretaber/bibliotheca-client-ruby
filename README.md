@@ -4,6 +4,9 @@ The client for [Bibliotheca](https://github.com/cedretaber/bibliotheca) the smal
 
 [![Build Status](https://travis-ci.org/cedretaber/bibliotheca-client-ruby.svg?branch=master)](https://travis-ci.org/cedretaber/bibliotheca-client-ruby)
 [![codecov](https://codecov.io/gh/cedretaber/bibliotheca-client-ruby/branch/master/graph/badge.svg)](https://codecov.io/gh/cedretaber/bibliotheca-client-ruby)
+[![Code Climate](https://codeclimate.com/github/cedretaber/bibliotheca-client-ruby/badges/gpa.svg)](https://codeclimate.com/github/cedretaber/bibliotheca-client-ruby)
+[![Issue Count](https://codeclimate.com/github/cedretaber/bibliotheca-client-ruby/badges/issue_count.svg)](https://codeclimate.com/github/cedretaber/bibliotheca-client-ruby)
+[![Dependency Status](https://gemnasium.com/badges/github.com/cedretaber/bibliotheca-client-ruby.svg)](https://gemnasium.com/github.com/cedretaber/bibliotheca-client-ruby)
 
 ## Installation
 
