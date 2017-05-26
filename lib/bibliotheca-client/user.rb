@@ -3,7 +3,7 @@ require "time"
 module Bibliotheca
   USER_ATTRIBUTES = %i(id email password auth_code created_at updated_at).freeze
 
-  class User < Struct.new *USER_ATTRIBUTES
+  class User < Struct.new(*USER_ATTRIBUTES)
     def self.from_hash(json)
       User.new(
         json["id"],

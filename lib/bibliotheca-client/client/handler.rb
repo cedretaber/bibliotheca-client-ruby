@@ -24,43 +24,29 @@ module Bibliotheca
       @http_client.delete(@@bibliotheca_url + url)
     end
 
-    def handle_book(res)
-      if res.is_a? Net::HTTPOK
-        book = Book.from_hash JSON.parse(res.body)["book"]
-        Response::Success.new(book)
-      else
-        handle_error(res)
-      end
-    end
+    %w(Book User).each do |name|
+      sym = name.downcase
+      klass = Bibliotheca.const_get(name)
 
-    def handle_books(res)
-      if res.is_a? Net::HTTPOK
-        books = JSON.parse(res.body)["books"].map { |book|
-          Book.from_hash book
-        }
-        Response::Success.new(books)
-      else
-        handle_error(res)
-      end
-    end
+      define_method "handle_#{sym}" do |res|
+        if res.is_a? Net::HTTPOK
+          entity = klass.from_hash JSON.parse(res.body)[sym]
+          Response::Success.new entity
 
-    def handle_user(res)
-      if res.is_a? Net::HTTPOK
-        user = User.from_hash JSON.parse(res.body)["user"]
-        Response::Success.new(user)
-      else
-        handle_error(res)
+        else
+          handle_error res
+        end
       end
-    end
 
-    def handle_users(res)
-      if res.is_a? Net::HTTPOK
-        users = JSON.parse(res.body)["users"].map { |user|
-          User.from_hash user
-        }
-        Response::Success.new(users)
-      else
-        handle_error(res)
+      define_method "handle_#{sym}s" do |res|
+        if res.is_a? Net::HTTPOK
+          entities = JSON.parse(res.body)["#{sym}s"].map { |entity|
+            klass.from_hash entity
+          }
+          Response::Success.new entities
+        else
+          handle_error res
+        end
       end
     end
 

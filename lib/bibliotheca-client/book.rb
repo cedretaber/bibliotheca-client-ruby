@@ -14,7 +14,7 @@ module Bibliotheca
     created_at
   ).freeze
 
-  class Book < Struct.new *BOOK_ATTRIBUTES
+  class Book < Struct.new(*BOOK_ATTRIBUTES)
     def self.from_hash(json)
       Book.new(
         json["id"],

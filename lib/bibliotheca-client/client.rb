@@ -38,7 +38,7 @@ module Bibliotheca
           end
         ) + Paths::LOGIN
 
-        auth_header = @@auth_header if auth_header.nil?
+        auth_header ||= @@auth_header
 
         res = HTTP.post_without_auth(
           url,
