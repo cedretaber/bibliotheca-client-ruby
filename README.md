@@ -2,6 +2,9 @@
 
 The client for [Bibliotheca](https://github.com/cedretaber/bibliotheca) the small library application.
 
+[![Build Status](https://travis-ci.org/cedretaber/bibliotheca-client-ruby.svg?branch=master)](https://travis-ci.org/cedretaber/bibliotheca-client-ruby)
+[![codecov](https://codecov.io/gh/cedretaber/bibliotheca-client-ruby/branch/master/graph/badge.svg)](https://codecov.io/gh/cedretaber/bibliotheca-client-ruby)
+
 ## Installation
 
 Add this line to your application's Gemfile:
