@@ -39,9 +39,9 @@ module Bibliotheca
         SEARCH: "/api/books/",
         INSERT: "/api/books/",
         DETAIL: -> id { "/api/books/detail/#{id}" },
-        REMOVE: -> id { "api/books/remove/#{id}" },
-        LEND: -> id { "api/books/lend/#{id}" },
-        BACK: -> id { "api/books/back/#{id}" }
+        REMOVE: -> id { "/api/books/remove/#{id}" },
+        LEND: -> id { "/api/books/lend/#{id}" },
+        BACK: -> id { "/api/books/back/#{id}" }
       )
     end
   end

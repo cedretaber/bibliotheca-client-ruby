@@ -30,8 +30,8 @@ module Bibliotheca
       handle_no_content delete Paths::Users::DELETE.(id)
     end
 
-    def user_book_lent(id, book_id)
-      handle_no_content get Paths::Users::Books::LENT.(id, book_id)
+    def user_book_lend(id, book_id)
+      handle_no_content get Paths::Users::Books::LEND.(id, book_id)
     end
 
     def user_book_back(id, book_id)
@@ -41,15 +41,15 @@ module Bibliotheca
     ## Book API
 
     def book_search(query)
-      handle_books get Paths::Books::SEARCH + "?q=#{URI.encode query}"
-    end
-
-    def book_detail(id)
-      handle_book get Paths::Books::DETAIL.(id)
+      handle_books get Paths::Books::SEARCH + "?#{URI.encode_www_form q: query}"
     end
 
     def book_insert(param)
       handle_book post Paths::Books::INSERT, to_book_param(param)
+    end
+
+    def book_detail(id)
+      handle_book get Paths::Books::DETAIL.(id)
     end
 
     def book_remove(id)

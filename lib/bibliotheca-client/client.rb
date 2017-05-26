@@ -19,14 +19,14 @@ module Bibliotheca
     @@logger = Logger.new($stdout)
 
     def initialize(token, url = @@bibliotheca_url, auth_header = @@auth_header)
-      @http_client = HTTP.new(url, token, auth_header)
+      @http_client = HTTP.new token, url, auth_header
     end
 
     include Operations
     include Handler
 
     class << self
-      def login(email, password, url = nil, auth_header = nil)
+      def login(email, password, url: nil, auth_header: nil)
         url = (
           case url
           when String
@@ -58,13 +58,17 @@ module Bibliotheca
       def session(email, password, url = nil, auth_header = nil)
         return unless block_given?
 
-        token = login(email, password, url, auth_header)
-        client = Client.new(token, url, auth_header)
+        url ||= @@bibliotheca_url
+        auth_header ||= @@auth_header
 
-        begin
-          yield client
-        ensure
-          client.logout
+        if token = login(email, password, url: url, auth_header: auth_header)
+          client = Client.new token, url, auth_header
+
+          begin
+            yield client
+          ensure
+            client.logout
+          end
         end
       end
 

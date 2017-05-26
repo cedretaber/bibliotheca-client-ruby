@@ -11,9 +11,9 @@ module Bibliotheca
       Net::HTTP.new(url.host, url.port).start { |http| http.request(req) }
     end
 
-    def initialize(url_base, token, auth_header)
-      @url_base = url_base
+    def initialize(token, url_base, auth_header)
       @token = token
+      @url_base = url_base
       @auth_header = auth_header
     end
 

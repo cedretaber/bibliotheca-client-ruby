@@ -178,4 +178,42 @@ class TestOperationsUser < Test::Unit::TestCase
       assert_false res.success?
     end
   end
+
+  test "user_book_lend" do
+    book_id = 42
+    lmd = -> req, res {
+      if req[@auth_header] == @token
+        res.status = 204
+      else
+        res.status = 403
+      end
+    }
+
+    server.with_mount(Bibliotheca::Paths::Users::Books::LEND.(@user1.id, book_id), lmd) do
+      res = @client.user_book_lend @user1.id, book_id
+      assert res.success?
+
+      res = @iv_client.user_book_lend @user1.id, book_id
+      assert_false res.success?
+    end
+  end
+
+  test "user_book_back" do
+    book_id = 42
+    lmd = -> req, res {
+      if req[@auth_header] == @token
+        res.status = 204
+      else
+        res.status = 403
+      end
+    }
+
+    server.with_mount(Bibliotheca::Paths::Users::Books::BACK.(@user1.id, book_id), lmd) do
+      res = @client.user_book_back @user1.id, book_id
+      assert res.success?
+
+      res = @iv_client.user_book_back @user1.id, book_id
+      assert_false res.success?
+    end
+  end
 end

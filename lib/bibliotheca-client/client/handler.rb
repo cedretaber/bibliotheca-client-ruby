@@ -83,14 +83,14 @@ module Bibliotheca
     end
 
     def to_user_param(params)
-      to_param(:user, params)
+      to_params(:user, params)
     end
 
     def to_book_param(params)
       to_params(:book, params)
     end
 
-    def to_param(key, params)
+    def to_params(key, params)
       { key => params.is_a?(Hash) ? params : params.to_h }
     end
   end

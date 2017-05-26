@@ -1,13 +1,4 @@
-require "webrick"
-
-module WEBrick
-  module HTTPServlet
-    class ProcHandler < AbstractServlet
-      alias do_PUT    do_POST
-      alias do_DELETE do_GET
-    end
-  end
-end
+require_relative "./patch_webrick"
 
 module WithServer
 
@@ -32,9 +23,11 @@ module WithServer
     return unless block_given?
     server.mount_proc path, prc
 
-    yield
-
-    server.unmount path
+    begin
+      yield
+    ensure
+      server.unmount path
+    end
   end
 
   def self.extended(test_class)
