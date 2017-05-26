@@ -1,4 +1,4 @@
-module BibliothecaClient
+module Bibliotheca
   module Paths
 
     def self.set_consts(context, consts)

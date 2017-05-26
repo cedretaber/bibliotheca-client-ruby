@@ -1,6 +1,14 @@
-module BibliothecaClient
+module Bibliotheca
   module Response
-    Success = Struct.new(:data)
-    Error = Struct.new(:status, :message)
+    class  Success < Struct.new(:data)
+      def success?
+        true
+      end
+    end
+    class Error < Struct.new(:status, :message)
+      def success?
+        false
+      end
+    end
   end
 end

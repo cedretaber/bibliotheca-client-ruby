@@ -1,6 +1,6 @@
 require "time"
 
-module BibliothecaClient
+module Bibliotheca
   USER_ATTRIBUTES = %i(id email password auth_code created_at updated_at).freeze
 
   class User < Struct.new *USER_ATTRIBUTES

@@ -1,7 +1,7 @@
 require "net/http"
 require "uri"
 
-module BibliothecaClient
+module Bibliotheca
   class HTTP
     def self.post_without_auth(url, body)
       req = Net::HTTP::Post.new(url.path)

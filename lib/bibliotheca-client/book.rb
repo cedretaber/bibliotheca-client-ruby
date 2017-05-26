@@ -1,6 +1,6 @@
 require "time"
 
-module BibliothecaClient
+module Bibliotheca
   BOOK_ATTRIBUTES = %i(
     id
     title
